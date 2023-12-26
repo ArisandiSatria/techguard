@@ -23,6 +23,10 @@ mongoose.connect(MONGODB_URL).then(() => {
 
 app.use("/api/auth", authRouter)
 
+app.use("/", (req, res) => {
+  res.json("HELLOOOO")
+})
+
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500
   const message = err.message || "Internal server error!"

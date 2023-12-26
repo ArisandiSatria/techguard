@@ -23,7 +23,7 @@ mongoose.connect(MONGODB_URL).then(() => {
 
 app.use("/api/auth", authRouter)
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json("HELLOOOO")
 })
 

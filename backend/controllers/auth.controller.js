@@ -1,6 +1,7 @@
 import { errorHandler } from "../utils/errorHandler.js";
 import User from "../models/user.model.js";
 
+import validateEmail from "../utils/validateEmail.js";
 import bcryptjs from "bcryptjs";
 import { JWT_TOKEN } from "../config.js";
 import jwt from "jsonwebtoken";
@@ -8,8 +9,16 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res, next) => {
   const { username, email, password, confirmPassword } = req.body;
 
+  if (!username || !email || !password || !confirmPassword) {
+    return next(errorHandler(400, "Please, fill all input!"));
+  }
+
+  if (!validateEmail(email)) {
+    return next(errorHandler(400, "Invalid email!"));
+  }
+
   if (password != confirmPassword) {
-    return next(errorHandler(401, "Password not match!"));
+    return next(errorHandler(400, "Password not match!"));
   }
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
@@ -37,6 +46,14 @@ export const login = async (req, res, next) => {
   try {
     const validUser = await User.findOne({ email });
 
+    if (!email || !password) {
+      return next(errorHandler(400, "Please, fill all input!"));
+    }
+  
+    if (!validateEmail(email)) {
+      return next(errorHandler(400, "Invalid email!"));
+    }
+
     if (!validUser) return next(errorHandler(404, "User not found!"));
 
     const validPassword = bcryptjs.compareSync(password, validUser.password);
@@ -57,9 +74,9 @@ export const login = async (req, res, next) => {
 
 export const logout = async (req, res, next) => {
   try {
-    res.clearCookie("access_token")
-    res.status(200).json({message: "User has been logout!"})
+    res.clearCookie("access_token");
+    res.status(200).json({ message: "User has been logout!" });
   } catch (error) {
-    next(error)
+    next(error);
   }
 };

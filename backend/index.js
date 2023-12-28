@@ -5,6 +5,7 @@ import mongoose from "mongoose"
 import { MONGODB_URL, PORT } from "./config.js"
 
 import authRouter from "./routes/auth.route.js"
+import productRouter from "./routes/product.route.js"
 
 const app = express()
 
@@ -22,6 +23,7 @@ mongoose.connect(MONGODB_URL).then(() => {
 })
 
 app.use("/api/auth", authRouter)
+app.use("/api/product", productRouter)
 
 app.get("/", (req, res) => {
   res.json("HELLOOOO")

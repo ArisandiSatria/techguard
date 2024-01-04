@@ -393,7 +393,50 @@ Link API : _coming soon_
     }
     ```
 
-### 6. **Get Products**
+### 6. **Delete Product**
+
+- Endpoint: `api/product/delete-product/:id`
+- Method: `DELETE`
+- Auth: YES
+- Body: -
+
+- Response:
+
+  - Success: `200 Ok`
+
+    Example:
+
+    ```json
+    {
+      "message": "{product-name} has been deleted!"
+    }
+    ```
+
+  - Error: `404 Not Found` || `500 Internal Server Error`
+
+    Example:
+
+    If can't find product `404 Not Found`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 404,
+      "message": "Product not found!"
+    }
+    ```
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+
+### 7. **Get Products**
 
 - Endpoint: `api/product/:category`
 - Method: `GET`
@@ -464,7 +507,7 @@ Link API : _coming soon_
     }
     ```
 
-### 6. **Get Product Detail**
+### 8. **Get Product Detail**
 
 - Endpoint: `api/product/:category/:id`
 - Method: `GET`
@@ -493,7 +536,7 @@ Link API : _coming soon_
     }
     ```
 
-  - Error: `404 Not Found` || 500 `Internal Server Error`
+  - Error: `404 Not Found` || `500 Internal Server Error`
 
     Example:
 
@@ -505,6 +548,7 @@ Link API : _coming soon_
       "statusCode": 404,
       "message": "Product not found!"
     }
+    ```
 
     If the server get an error `500 Internal Server Error`:
 
@@ -515,3 +559,61 @@ Link API : _coming soon_
       "message": "Internal server error!"
     }
     ```
+
+### 8. **Forgot Password**
+
+- Endpoint: `api/auth/forgot-password`
+- Method: `POST`
+- Auth: No
+- Body: 
+
+  ```json
+  {
+    "email": "string"
+  }
+  ```
+
+  Example:
+
+  ```json
+   {
+    "email": "user2@gmail.com"
+  }
+  ```
+
+- Response:
+
+  - Success: `200 Ok`
+
+    Example:
+
+    ```json
+    {
+      "message": "Email sent!"
+    }
+    ```
+
+  - Error: `404 Not Found` || `500 Internal Server Error`
+
+    Example:
+
+    If can't find user `404 Not Found`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 404,
+      "message": "User not found!"
+    }
+    ```
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+

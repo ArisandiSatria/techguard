@@ -4,7 +4,11 @@ body {
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
   margin: 0;
-  padding: 2% 10% 0;
+  padding: 0;
+}
+
+.home {
+  padding: 0 10%;
 }
 
 /* Header Section */
@@ -13,6 +17,11 @@ header {
   justify-content: space-between;
   text-transform: uppercase;
   align-items: center;
+  padding: 0 10%;
+}
+
+header h2 {
+  color: #000;
 }
 
 header ul,
@@ -20,8 +29,154 @@ header li {
   list-style: none;
   display: flex;
   gap: 16px;
+  color: #000;
+}
+
+header li:hover {
+  text-decoration: underline;
 }
 
 header .icon {
   font-size: 32px;
+}
+
+/* Not Found Section */
+.not-found {
+  height: 85vh;
+  margin-top: 17%;
+  text-align: center;
+}
+
+.not-found h2 {
+  font-size: 32px;
+}
+
+.not-found h4 {
+  font-weight: 400;
+}
+
+.not-found p:hover {
+  text-decoration: underline;
+}
+
+/* Home Section */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+  margin-top: 100px;
+  justify-content: space-between;
+}
+
+.hero img {
+  width: 400px;
+}
+
+.hero .hero-content {
+  width: 670px;
+}
+
+.hero .hero-content h2 {
+  font-size: 40px;
+}
+
+.hero .hero-content p {
+  font-size: 30px;
+}
+
+.hero .hero-content h3 {
+  font-size: 30px;
+  margin-top: 40px;
+}
+
+/* Features Section */
+.features {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+  margin-top: 300px;
+}
+
+.features > div {
+  width: 300px;
+  text-align: center;
+}
+
+.features img {
+  width: 300px;
+  height: 250px;
+  object-fit: contain;
+}
+
+.features h3 {
+  font-size: 35px;
+}
+
+/* Product Section */
+
+.product {
+  margin-top: 165px;
+  text-align: center;
+}
+
+.product h3 {
+  font-size: 30px;
+}
+
+.product-sample {
+  display: flex;
+  gap: 45px;
+}
+
+.product-sample img {
+  width: 240px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.product-sample h4 {
+  font-size: 20px;
+}
+
+.product-sample p {
+  font-size: 18px;
+  text-align: left;
+}
+
+/* Footer Section */
+footer {
+  background-color: #80bddf;
+  display: flex;
+  font-size: 13px;
+  gap: 100px;
+  padding: 17px 10%;
+  margin-top: 45px;
+}
+
+footer .footer-content {
+  width: 250px;
+  margin-right: 40px;
+}
+
+footer img {
+  width: 97px;
+}
+
+footer .sitemap {
+  display: flex;
+  gap: 100px;
+}
+
+footer .sitemap h4 {
+  font-size: 20px;
+}
+
+footer .sitemap ul {
+  margin: 0;
+  padding: 0;
+}
+
+footer .sitemap ul li {
+  list-style: none;
+  margin-bottom: 5px;
 }

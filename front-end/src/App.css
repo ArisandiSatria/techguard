@@ -171,7 +171,8 @@ footer .sitemap h4 {
   font-size: 20px;
 }
 
-footer .sitemap ul {
+footer .sitemap ul,
+footer .sitemap li {
   margin: 0;
   padding: 0;
 }
@@ -179,4 +180,10 @@ footer .sitemap ul {
 footer .sitemap ul li {
   list-style: none;
   margin-bottom: 5px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+footer li:hover {
+  text-decoration: underline;
 }

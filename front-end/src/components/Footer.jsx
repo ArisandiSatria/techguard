@@ -2,6 +2,7 @@ import React from "react";
 import { IoLocationSharp } from "react-icons/io5";
 import { IoMail } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
@@ -19,10 +20,18 @@ export default function Footer() {
         <div>
           <h4>COMPANY</h4>
           <ul>
-            <li>HOME</li>
-            <li>PRODUCT</li>
-            <li>SERVICE</li>
-            <li>ADRESS</li>
+            <Link to={"/"} style={{ textDecoration: "none" }}>
+              <li>home</li>
+            </Link>
+            <Link to={"/product"} style={{ textDecoration: "none" }}>
+              <li>product</li>
+            </Link>
+            <Link to={"/service"} style={{ textDecoration: "none" }}>
+              <li>service</li>
+            </Link>
+            <Link to={"/contact"} style={{ textDecoration: "none" }}>
+              <li>contact</li>
+            </Link>
           </ul>
         </div>
         <div>

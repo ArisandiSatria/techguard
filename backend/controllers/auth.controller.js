@@ -100,12 +100,12 @@ export const forgotPassword = async (req, res, next) => {
     secure: true,
     auth: {
       user: USER_EMAIL,
-      pass: PASSWORD_EMAIL
-    }
+      pass: PASSWORD_EMAIL,
+    },
   });
 
   const mailOptions = {
-    from: "arisandi.satria.jeujanan@gmail.com",
+    from: USER_EMAIL,
     to: email,
     subject: "Reset Password",
     text: `
@@ -144,7 +144,7 @@ export const resetPassword = async (req, res, next) => {
 
   const hashedPassword = bcryptjs.hashSync(password, 10);
 
-  const updateUser = UserModel.findByIdAndUpdate(
+  const updateUser = await User.findByIdAndUpdate(
     { _id: id },
     { password: hashedPassword }
   );

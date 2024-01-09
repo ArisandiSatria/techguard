@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
             Machinery,Face Recognition, Access Door Control, CCTV with best
             quality products and affordable prices.
           </p>
-          <h3>CHECK OUR PRODUCT NOW!</h3>
+          <Link to={"/product"} style={{ textDecoration: "none" }}>
+            <h3>CHECK OUR PRODUCT NOW!</h3>
+          </Link>
         </div>
       </div>
 

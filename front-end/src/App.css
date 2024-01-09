@@ -45,12 +45,6 @@ header .icon {
   height: 85vh;
   margin-top: 17%;
   text-align: center;
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background-image: linear-gradient rgba(71, 152, 232, 1);
 }
 
 .not-found h2 {
@@ -93,6 +87,12 @@ header .icon {
 .hero .hero-content h3 {
   font-size: 30px;
   margin-top: 40px;
+  color: #000;
+}
+
+.hero .hero-content h3:hover {
+  letter-spacing: 2px;
+  transition: 0.2s;
 }
 
 /* Features Section */

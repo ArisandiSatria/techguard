@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 import { Register } from "./pages/Register";
 
 import NotFound from "./components/NotFound";
-import { Register } from "./pages/Register";
 import Product from "./pages/Product";
 
 function App() {

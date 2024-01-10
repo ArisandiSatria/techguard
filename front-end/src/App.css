@@ -40,6 +40,19 @@ header .icon {
   font-size: 32px;
 }
 
+header p {
+  color: #000;
+  padding: 0.5rem 1rem;
+  border: 2px solid #000;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+header p:hover {
+  color: #fff;
+  background-color: #000;
+}
+
 /* Not Found Section */
 .not-found {
   height: 85vh;

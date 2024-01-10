@@ -1,6 +1,6 @@
 import React from "react";
-import { CiUser } from "react-icons/ci";
-import { BsCart3 } from "react-icons/bs";
+// import { CiUser } from "react-icons/ci";
+// import { BsCart3 } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
 
@@ -25,8 +25,11 @@ export default function Header() {
         </Link>
       </ul>
       <div>
-        <CiUser className="icon" />
-        <BsCart3 className="icon" />
+        {/* <CiUser className="icon" />
+        <BsCart3 className="icon" /> */}
+        <Link to={"/login"} style={{ textDecoration: "none" }}>
+          <p>Login</p>
+        </Link>
       </div>
     </header>
   );

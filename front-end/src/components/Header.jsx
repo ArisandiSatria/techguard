@@ -24,11 +24,14 @@ export default function Header() {
           <li>contact</li>
         </Link>
       </ul>
-      <div>
+      <div className="auth-button">
         {/* <CiUser className="icon" />
         <BsCart3 className="icon" /> */}
         <Link to={"/login"} style={{ textDecoration: "none" }}>
-          <p>Login</p>
+          <p className="login">Login</p>
+        </Link>
+        <Link to={"/register"} style={{ textDecoration: "none" }}>
+          <p className="register">Register</p>
         </Link>
       </div>
     </header>

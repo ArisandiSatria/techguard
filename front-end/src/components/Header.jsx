@@ -14,7 +14,7 @@ export default function Header() {
         <Link to={"/"} style={{ textDecoration: "none" }}>
           <li>home</li>
         </Link>
-        <Link to={"/product"} style={{ textDecoration: "none" }}>
+        <Link to={"/products"} style={{ textDecoration: "none" }}>
           <li>product</li>
         </Link>
         <Link to={"/service"} style={{ textDecoration: "none" }}>

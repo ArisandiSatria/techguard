@@ -138,7 +138,7 @@ Link API : _coming soon_
     }
     ```
 
-    **Note:** *Get the token from cookies named "access_token"*
+    **Note:** _Get the token from cookies named "access_token"_
 
   - Error: `400 Bad Request` || `401 Unauthorized` || `404 Not Found` || `500 Internal Server Error`
 
@@ -373,6 +373,7 @@ Link API : _coming soon_
       "message": "Please, fill all input!"
     }
     ```
+
     If can't find product `404 Not Found`:
 
     ```json
@@ -436,9 +437,9 @@ Link API : _coming soon_
     }
     ```
 
-### 7. **Get Products**
+### 7. **Get All Products**
 
-- Endpoint: `api/product/:category`
+- Endpoint: `api/product/`
 - Method: `GET`
 - Auth: No
 - Body: -
@@ -452,44 +453,44 @@ Link API : _coming soon_
     ```json
     [
       {
-          "_id": "658d00027314b533c2d3f0bc",
-          "category": "fingerprint-attendance",
-          "name": "Fingerspot Revo W-230N",
-          "image": "asdf",
-          "description": "Revo W-230N adalah mesin absensi sidik jari koneksi WiFi Fingerspot terbaru. Akses data lebih praktis tanpa mengatur kabel jaringan. Selain itu, mendukung Absensi Online untuk mengelola data absensi lebih mudah dari mana saja.",
-          "specifications": [],
-          "note": "",
-          "packages": [],
-          "createdAt": "2023-12-28T04:56:34.190Z",
-          "updatedAt": "2023-12-28T04:56:34.190Z",
-          "__v": 0
+        "_id": "658d00027314b533c2d3f0bc",
+        "category": "fingerprint-attendance",
+        "name": "Fingerspot Revo W-230N",
+        "image": "asdf",
+        "description": "Revo W-230N adalah mesin absensi sidik jari koneksi WiFi Fingerspot terbaru. Akses data lebih praktis tanpa mengatur kabel jaringan. Selain itu, mendukung Absensi Online untuk mengelola data absensi lebih mudah dari mana saja.",
+        "specifications": [],
+        "note": "",
+        "packages": [],
+        "createdAt": "2023-12-28T04:56:34.190Z",
+        "updatedAt": "2023-12-28T04:56:34.190Z",
+        "__v": 0
       },
       {
-          "_id": "658d00637314b533c2d3f0bf",
-          "category": "fingerprint-attendance",
-          "name": "Solution P207",
-          "image": "asdf",
-          "description": "Mesin Absensi Solution P208 dirancang khusus dengan Teknologi SSR Function, yaitu Pengaturan Jadwal Kerja bisa langsung dilakukan di mesin sampai dengan pengolahan data dan Export Laporan Kehadiran. Mesin ini juga sudah dilengkapi dengan Layar TFT LCD Full Color dan USB Cable untuk koneksi ke software serta Port USB Disk untuk penarikan data dengan Flash Disk tentunya. Mesin ini dilengkapi Bracket agar dapat ditempel dinding dengan lebih kuat dan aman. Dapatkan penawaran terbaik dari kami sekarang juga.",
-          "specifications": [],
-          "note": "",
-          "packages": [],
-          "createdAt": "2023-12-28T04:58:11.725Z",
-          "updatedAt": "2023-12-28T04:58:11.725Z",
-          "__v": 0
+        "_id": "658d00637314b533c2d3f0bf",
+        "category": "fingerprint-attendance",
+        "name": "Solution P207",
+        "image": "asdf",
+        "description": "Mesin Absensi Solution P208 dirancang khusus dengan Teknologi SSR Function, yaitu Pengaturan Jadwal Kerja bisa langsung dilakukan di mesin sampai dengan pengolahan data dan Export Laporan Kehadiran. Mesin ini juga sudah dilengkapi dengan Layar TFT LCD Full Color dan USB Cable untuk koneksi ke software serta Port USB Disk untuk penarikan data dengan Flash Disk tentunya. Mesin ini dilengkapi Bracket agar dapat ditempel dinding dengan lebih kuat dan aman. Dapatkan penawaran terbaik dari kami sekarang juga.",
+        "specifications": [],
+        "note": "",
+        "packages": [],
+        "createdAt": "2023-12-28T04:58:11.725Z",
+        "updatedAt": "2023-12-28T04:58:11.725Z",
+        "__v": 0
       },
       {
-          "_id": "658d00787314b533c2d3f0c1",
-          "category": "fingerprint-attendance",
-          "name": "Fingerspot Revo WDV 204BNC",
-          "image": "asdffdsa",
-          "description": "Revo WDV-204BNC adalah mesin absensi Telapak Tangan (Vein Scanning) dan Sidik Jari yang lebih ekonomis. Mendukung Absensi Online sekaligus bisa digunakan sebagai akses kontrol atau buka pintu. Mesin ini juga dilengkapi dengan koneksi WiFi untuk kemudahan instalasi tanpa kabel jaringan. Tersedia sensor telapak tangan (Vein Scanning)) memberikan pilihan absensi kehadiran lebih higienis dengan penggunaan tanpa sentuh mesin dan lebih praktis.",
-          "specifications": [],
-          "note": "",
-          "packages": [],
-          "createdAt": "2023-12-28T04:58:32.084Z",
-          "updatedAt": "2023-12-28T05:10:57.926Z",
-          "__v": 0
-      },
+        "_id": "658d00787314b533c2d3f0c1",
+        "category": "fingerprint-attendance",
+        "name": "Fingerspot Revo WDV 204BNC",
+        "image": "asdffdsa",
+        "description": "Revo WDV-204BNC adalah mesin absensi Telapak Tangan (Vein Scanning) dan Sidik Jari yang lebih ekonomis. Mendukung Absensi Online sekaligus bisa digunakan sebagai akses kontrol atau buka pintu. Mesin ini juga dilengkapi dengan koneksi WiFi untuk kemudahan instalasi tanpa kabel jaringan. Tersedia sensor telapak tangan (Vein Scanning)) memberikan pilihan absensi kehadiran lebih higienis dengan penggunaan tanpa sentuh mesin dan lebih praktis.",
+        "specifications": [],
+        "note": "",
+        "packages": [],
+        "createdAt": "2023-12-28T04:58:32.084Z",
+        "updatedAt": "2023-12-28T05:10:57.926Z",
+        "__v": 0
+      }
     ]
     ```
 
@@ -507,7 +508,78 @@ Link API : _coming soon_
     }
     ```
 
-### 8. **Get Product Detail**
+### 8. **Get Product**
+
+- Endpoint: `api/product/:category`
+- Method: `GET`
+- Auth: No
+- Body: -
+
+- Response:
+
+  - Success: `200 Ok`
+
+    Example:
+
+    ```json
+    [
+      {
+        "_id": "658d00027314b533c2d3f0bc",
+        "category": "fingerprint-attendance",
+        "name": "Fingerspot Revo W-230N",
+        "image": "asdf",
+        "description": "Revo W-230N adalah mesin absensi sidik jari koneksi WiFi Fingerspot terbaru. Akses data lebih praktis tanpa mengatur kabel jaringan. Selain itu, mendukung Absensi Online untuk mengelola data absensi lebih mudah dari mana saja.",
+        "specifications": [],
+        "note": "",
+        "packages": [],
+        "createdAt": "2023-12-28T04:56:34.190Z",
+        "updatedAt": "2023-12-28T04:56:34.190Z",
+        "__v": 0
+      },
+      {
+        "_id": "658d00637314b533c2d3f0bf",
+        "category": "fingerprint-attendance",
+        "name": "Solution P207",
+        "image": "asdf",
+        "description": "Mesin Absensi Solution P208 dirancang khusus dengan Teknologi SSR Function, yaitu Pengaturan Jadwal Kerja bisa langsung dilakukan di mesin sampai dengan pengolahan data dan Export Laporan Kehadiran. Mesin ini juga sudah dilengkapi dengan Layar TFT LCD Full Color dan USB Cable untuk koneksi ke software serta Port USB Disk untuk penarikan data dengan Flash Disk tentunya. Mesin ini dilengkapi Bracket agar dapat ditempel dinding dengan lebih kuat dan aman. Dapatkan penawaran terbaik dari kami sekarang juga.",
+        "specifications": [],
+        "note": "",
+        "packages": [],
+        "createdAt": "2023-12-28T04:58:11.725Z",
+        "updatedAt": "2023-12-28T04:58:11.725Z",
+        "__v": 0
+      },
+      {
+        "_id": "658d00787314b533c2d3f0c1",
+        "category": "fingerprint-attendance",
+        "name": "Fingerspot Revo WDV 204BNC",
+        "image": "asdffdsa",
+        "description": "Revo WDV-204BNC adalah mesin absensi Telapak Tangan (Vein Scanning) dan Sidik Jari yang lebih ekonomis. Mendukung Absensi Online sekaligus bisa digunakan sebagai akses kontrol atau buka pintu. Mesin ini juga dilengkapi dengan koneksi WiFi untuk kemudahan instalasi tanpa kabel jaringan. Tersedia sensor telapak tangan (Vein Scanning)) memberikan pilihan absensi kehadiran lebih higienis dengan penggunaan tanpa sentuh mesin dan lebih praktis.",
+        "specifications": [],
+        "note": "",
+        "packages": [],
+        "createdAt": "2023-12-28T04:58:32.084Z",
+        "updatedAt": "2023-12-28T05:10:57.926Z",
+        "__v": 0
+      }
+    ]
+    ```
+
+  - Error: `500 Internal Server Error`
+
+    Example:
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+
+### 9. **Get Product Detail**
 
 - Endpoint: `api/product/:category/:id`
 - Method: `GET`
@@ -560,12 +632,12 @@ Link API : _coming soon_
     }
     ```
 
-### 8. **Forgot Password**
+### 10. **Forgot Password**
 
 - Endpoint: `api/auth/forgot-password`
 - Method: `POST`
 - Auth: No
-- Body: 
+- Body:
 
   ```json
   {
@@ -576,7 +648,7 @@ Link API : _coming soon_
   Example:
 
   ```json
-   {
+  {
     "email": "user2@gmail.com"
   }
   ```
@@ -616,4 +688,3 @@ Link API : _coming soon_
       "message": "Internal server error!"
     }
     ```
-

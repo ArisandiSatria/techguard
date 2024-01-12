@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Product() {
   return (
@@ -35,41 +36,49 @@ export default function Product() {
       </div>
 
       <div className="product-section">
-        <div className="product-card">
-          <img src="images/product-1.jpg" alt="" />
-          <p>product name</p>
-          <div className="product-card-footer">
-            <p>Rp 100.000</p>
-            <p className="button">Buy Now</p>
+        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
+          <div className="product-card">
+            <img src="images/product-1.jpg" alt="" />
+            <p>product name</p>
+            <div className="product-card-footer">
+              <p>Rp 100.000</p>
+              <p className="button">Buy Now</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="product-card">
-          <img src="images/product-2.jpg" alt="" />
-          <p>product name</p>
-          <div className="product-card-footer">
-            <p>Rp 100.000</p>
-            <p className="button">Buy Now</p>
+        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
+          <div className="product-card">
+            <img src="images/product-2.jpg" alt="" />
+            <p>product name</p>
+            <div className="product-card-footer">
+              <p>Rp 100.000</p>
+              <p className="button">Buy Now</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="product-card">
-          <img src="images/product-3.jpg" alt="" />
-          <p>product name</p>
-          <div className="product-card-footer">
-            <p>Rp 100.000</p>
-            <p className="button">Buy Now</p>
+        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
+          <div className="product-card">
+            <img src="images/product-3.jpg" alt="" />
+            <p>product name</p>
+            <div className="product-card-footer">
+              <p>Rp 100.000</p>
+              <p className="button">Buy Now</p>
+            </div>
           </div>
-        </div>
+        </Link>
 
-        <div className="product-card">
-          <img src="images/product-4.jpg" alt="" />
-          <p>product name</p>
-          <div className="product-card-footer">
-            <p>Rp 100.000</p>
-            <p className="button">Buy Now</p>
+        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
+          <div className="product-card">
+            <img src="images/product-4.jpg" alt="" />
+            <p>product name</p>
+            <div className="product-card-footer">
+              <p>Rp 100.000</p>
+              <p className="button">Buy Now</p>
+            </div>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

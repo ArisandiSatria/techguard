@@ -6,8 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon index.js",
-    "start": "node index.js",
-    "vercel-build": "echo hellooo"
+    "start": "node index.js"
   },
   "keywords": [],
   "author": "",

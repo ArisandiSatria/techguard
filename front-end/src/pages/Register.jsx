@@ -42,9 +42,9 @@ export const Register = (props) => {
         />
         <button type="submit">Log In</button>
       </form>
-      <button className="link-btn" onClick={() => props.onFormSwitch("login")}>
-        Already have an account? Login here.
-      </button>
+      <Link to={"/login"} style={{ textDecoration: "none" }}>
+        <h3> Already have an account? Login here.</h3>
+      </Link>
     </div>
   );
 };

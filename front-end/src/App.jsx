@@ -9,6 +9,7 @@ import Product from "./pages/Product";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
+import ShoppingCart from "./pages/ShopCart.jsx";
 
 function App() {
   const location = useLocation();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/register" element={<Register />} />/
         <Route path="/products" element={<Product />} />/
         <Route path="/products/:id" element={<ProductDetail />} />/
+        <Route path="/cart" element={<ShoppingCart />} />/
         <Route path="*" element={<NotFound />} />
       </Routes>
       {showHeaderAndFooter && <Footer />}

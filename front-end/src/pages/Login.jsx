@@ -12,31 +12,33 @@ export default function Login() {
       <div className="auth-form-container">
         <form onSubmit={handleSubmit}>
           <label htmlfor="email">email</label>
-          <input
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Enter your email"
-            id="email"
-            name="email"
-          />
-          <label htmlfor="Password">Password</label>
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="Password"
-            placeholder="Enter your password"
-            id="password"
-            name="password"
-          />
+          <div>
+            <input
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              placeholder="Enter your email"
+              id="email"
+              name="email"
+            />
+          </div>
+
+          <div className="Password">
+            <label htmlfor="Password">Password</label>
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type="Password"
+              placeholder="Enter your password"
+              id="password"
+              name="password"
+            />
+          </div>
           <button type="submit">login</button>
         </form>
-        <button
-          className="link-btn"
-          onClick={() => props.onFormSwitch("register")}
-        >
-          Dont have an account? Register here.
-        </button>
+        <Link to={"/register"} style={{ textDecoration: "none" }}>
+          <h3>Dont have an account? Register here.</h3>
+        </Link>
       </div>
     </>
   );

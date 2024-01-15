@@ -253,11 +253,11 @@ button {
   width: 20dvw;
 }
 
-.product-page .product-section {
+.product-section {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  width: max-content;
+  width: 100%;
   height: max-content;
 }
 
@@ -320,7 +320,6 @@ button {
   justify-content: space-between;
   padding-right: 1rem;
   border-right: 1px solid #ddd;
-  width: 13rem;
 }
 
 .admin-menu .admin-panel-list .order-panel-button,
@@ -344,10 +343,11 @@ button {
 
 .admin .admin-page {
   padding: 0 1rem;
-  width: 80%;
+  width: 90%;
 }
 
-.admin-order-panel h1 {
+.admin-order-panel h1,
+.admin-product-panel h1 {
   font-size: 30px;
   text-transform: uppercase;
   font-weight: 300;
@@ -404,16 +404,9 @@ button {
   border-bottom: solid 1px rgba(255, 255, 255, 0.1);
 }
 
-/* for custom scrollbar for webkit browser*/
-
-::-webkit-scrollbar {
-  width: 6px;
-}
-::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+.admin-product-panel {
+  height: 800px;
+  overflow-x: auto;
 }
 
 /* Footer Section */
@@ -459,4 +452,16 @@ footer .sitemap ul li {
 
 footer li:hover {
   text-decoration: underline;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }

@@ -6,6 +6,7 @@ import { MONGODB_URL, PORT } from "./config.js";
 
 import authRouter from "./routes/auth.route.js";
 import productRouter from "./routes/product.route.js";
+import orderRouter from "./routes/order.route.js";
 
 const app = express();
 
@@ -27,6 +28,7 @@ mongoose
 
 app.use("/api/auth", authRouter);
 app.use("/api/product", productRouter);
+app.use("/api/order", orderRouter);
 
 app.get("/", (req, res) => {
   res.json("This is RESTful API for Coding Studio Academy Project");

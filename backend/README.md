@@ -441,7 +441,7 @@ API Link : _https://coding-studio-fp.vercel.app/_
 
 - Endpoint: `api/product/`
 - Method: `GET`
-- Auth: No
+- Auth: NO
 - Body: -
 
 - Response:
@@ -512,7 +512,7 @@ API Link : _https://coding-studio-fp.vercel.app/_
 
 - Endpoint: `api/product/:category`
 - Method: `GET`
-- Auth: No
+- Auth: NO
 - Body: -
 
 - Response:
@@ -583,7 +583,7 @@ API Link : _https://coding-studio-fp.vercel.app/_
 
 - Endpoint: `api/product/:category/:id`
 - Method: `GET`
-- Auth: No
+- Auth: NO
 - Body: -
 
 - Response:
@@ -636,7 +636,7 @@ API Link : _https://coding-studio-fp.vercel.app/_
 
 - Endpoint: `api/auth/forgot-password`
 - Method: `POST`
-- Auth: No
+- Auth: NO
 - Body:
 
   ```json
@@ -676,6 +676,385 @@ API Link : _https://coding-studio-fp.vercel.app/_
       "success": false,
       "statusCode": 404,
       "message": "User not found!"
+    }
+    ```
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+
+### 11. **Add Order**
+
+- Endpoint: `api/order/add-order`
+- Method: `POST`
+- Auth: YES
+- Body:
+
+  ```json
+  {
+    "userRef": "string",
+    "items": [
+      {
+        "product": "string",
+        "productImage": "string",
+        "quantity": "number"
+      },
+      {
+        "product": "string",
+        "productImage": "string",
+        "quantity": "number"
+      }
+    ],
+    "totalPrice": "number",
+    "status": "string"
+  }
+  ```
+
+  Example:
+
+  ```json
+  {
+    "userRef": "6596a9195ebf714a604224e8",
+    "items": [
+      {
+        "product": "GTX-310",
+        "productImage": "asdf",
+        "quantity": 2
+      },
+      {
+        "product": "INT-1000",
+        "productImage": "asdf",
+        "quantity": 2
+      }
+    ],
+    "totalPrice": 2000000,
+    "status": "processing"
+  }
+  ```
+
+- Response:
+
+  - Success: `201 Created`
+
+    Example:
+
+    ```json
+    {
+      "userRef": "6596a9195ebf714a604224e8",
+      "items": [
+        {
+          "product": "CRA-200",
+          "productImage": "asdf",
+          "quantity": 1,
+          "_id": "65a53547406c7d97915b0b64"
+        }
+      ],
+      "totalPrice": 4000000,
+      "status": "processing",
+      "_id": "65a53547406c7d97915b0b63",
+      "createdAt": "2024-01-15T13:38:15.560Z",
+      "updatedAt": "2024-01-15T13:38:15.560Z",
+      "__v": 0
+    }
+    ```
+
+  - Error: `401 Unauthorized` || `500 Internal Server Error`
+
+    Example:
+
+    If can't find user `401 Unauthorized`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 404,
+      "message": "Unauthorized!"
+    }
+    ```
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+
+### 12. **Edit Order**
+
+- Endpoint: `api/order/edit-order/:id"`
+- Method: `POST`
+- Auth: YES
+- Body:
+
+  ```json
+  {
+    "userRef": "string",
+    "items": [
+      {
+        "product": "string",
+        "productImage": "string",
+        "quantity": "number"
+      }
+    ],
+    "totalPrice": "number",
+    "status": "string"
+  }
+  ```
+
+  Example:
+
+  ```json
+  {
+    "userRef": "6596a9195ebf714a604224e8",
+    "items": [
+      {
+        "product": "CRA-200",
+        "productImage": "asdf",
+        "quantity": 1
+      }
+    ],
+    "totalPrice": 4000000,
+    "status": "cancelled"
+  }
+  ```
+
+- Response:
+
+  - Success: `200 Ok`
+
+    Example:
+
+    ```json
+    {
+      "_id": "65a53547406c7d97915b0b63",
+      "userRef": "6596a9195ebf714a604224e8",
+      "items": [
+        {
+          "product": "CRA-200",
+          "productImage": "asdf",
+          "quantity": 1,
+          "_id": "65a535f3406c7d97915b0b69"
+        }
+      ],
+      "totalPrice": 4000000,
+      "status": "cancelled",
+      "createdAt": "2024-01-15T13:38:15.560Z",
+      "updatedAt": "2024-01-15T13:41:07.790Z",
+      "__v": 0
+    }
+    ```
+
+  - Error: `401 Unauthorized` || `500 Internal Server Error`
+
+    Example:
+
+    If can't find user `401 Unauthorized`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 404,
+      "message": "Unauthorized!"
+    }
+    ```
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+
+### 13. **Get Orders**
+
+- Endpoint: `api/order/get-orders"`
+- Method: `POST`
+- Auth: YES
+- Body: -
+
+- Response:
+
+  - Success: `200 Ok`
+
+    Example:
+
+    ```json
+    [
+      {
+        "_id": "65a4ac6e4e6fb05d5355ca38",
+        "userRef": "6596a9195ebf714a604224e8",
+        "items": [
+          {
+            "product": "MX-350",
+            "productImage": "asdf",
+            "quantity": 3,
+            "_id": "65a4ac6e4e6fb05d5355ca39"
+          },
+          {
+            "product": "SF-100",
+            "productImage": "asdf",
+            "quantity": 4,
+            "_id": "65a4ac6e4e6fb05d5355ca3a"
+          },
+          {
+            "product": "AMD-3500",
+            "productImage": "asdf",
+            "quantity": 2,
+            "_id": "65a4ac6e4e6fb05d5355ca3b"
+          }
+        ],
+        "totalPrice": 3500000,
+        "status": "processing",
+        "createdAt": "2024-01-15T03:54:22.470Z",
+        "updatedAt": "2024-01-15T03:54:22.470Z",
+        "__v": 0
+      },
+      {
+        "_id": "65a4ace38f065eaf7440885a",
+        "userRef": "6596a9195ebf714a604224e8",
+        "items": [
+          {
+            "product": "TR-50",
+            "productImage": "asdf",
+            "quantity": 1,
+            "_id": "65a4ace38f065eaf7440885b"
+          }
+        ],
+        "totalPrice": 1000000,
+        "status": "processing",
+        "createdAt": "2024-01-15T03:56:19.950Z",
+        "updatedAt": "2024-01-15T03:56:19.950Z",
+        "__v": 0
+      },
+      {
+        "_id": "65a4ad2bd9804b43f7441ea5",
+        "userRef": "6596a9195ebf714a604224e8",
+        "items": [
+          {
+            "product": "GTX-310",
+            "productImage": "asdf",
+            "quantity": 2,
+            "_id": "65a4ad2bd9804b43f7441ea6"
+          },
+          {
+            "product": "INT-1000",
+            "productImage": "asdf",
+            "quantity": 2,
+            "_id": "65a4ad2bd9804b43f7441ea7"
+          }
+        ],
+        "totalPrice": 2000000,
+        "status": "completed",
+        "createdAt": "2024-01-15T03:57:31.830Z",
+        "updatedAt": "2024-01-15T04:00:34.283Z",
+        "__v": 0
+      },
+      {
+        "_id": "65a53547406c7d97915b0b63",
+        "userRef": "6596a9195ebf714a604224e8",
+        "items": [
+          {
+            "product": "CRA-200",
+            "productImage": "asdf",
+            "quantity": 1,
+            "_id": "65a535f3406c7d97915b0b69"
+          }
+        ],
+        "totalPrice": 4000000,
+        "status": "cancelled",
+        "createdAt": "2024-01-15T13:38:15.560Z",
+        "updatedAt": "2024-01-15T13:41:07.790Z",
+        "__v": 0
+      }
+    ]
+    ```
+
+  - Error: `401 Unauthorized` || `500 Internal Server Error`
+
+    Example:
+
+    If can't find user `401 Unauthorized`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 404,
+      "message": "Unauthorized!"
+    }
+    ```
+
+    If the server get an error `500 Internal Server Error`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 500,
+      "message": "Internal server error!"
+    }
+    ```
+
+### 14. **Get Order Detail**
+
+- Endpoint: `api/order/get-order/:id"`
+- Method: `POST`
+- Auth: YES
+- Body: -
+
+- Response:
+
+  - Success: `200 Ok`
+
+    Example:
+
+    ```json
+    {
+      "_id": "65a4ad2bd9804b43f7441ea5",
+      "userRef": "6596a9195ebf714a604224e8",
+      "items": [
+        {
+          "product": "GTX-310",
+          "productImage": "asdf",
+          "quantity": 2,
+          "_id": "65a4ad2bd9804b43f7441ea6"
+        },
+        {
+          "product": "INT-1000",
+          "productImage": "asdf",
+          "quantity": 2,
+          "_id": "65a4ad2bd9804b43f7441ea7"
+        }
+      ],
+      "totalPrice": 2000000,
+      "status": "completed",
+      "createdAt": "2024-01-15T03:57:31.830Z",
+      "updatedAt": "2024-01-15T04:00:34.283Z",
+      "__v": 0
+    }
+    ```
+
+  - Error: `401 Unauthorized` || `500 Internal Server Error`
+
+    Example:
+
+    If can't find user `401 Unauthorized`:
+
+    ```json
+    {
+      "success": false,
+      "statusCode": 404,
+      "message": "Unauthorized!"
     }
     ```
 

@@ -7,6 +7,18 @@ body {
   padding: 0;
 }
 
+.logout-button {
+  padding: 1rem;
+  background-color: rgb(189, 35, 35);
+  text-align: center;
+  border-radius: 6px;
+  color: #fff;
+}
+
+.logout-button:hover {
+  background-color: rgb(146, 26, 26);
+}
+
 .home,
 .product-page {
   padding: 0 10%;
@@ -290,21 +302,20 @@ button {
 }
 
 .product-page .filter {
-  height: 100%;
   width: 20dvw;
 }
 
-.product-page .product-section {
+.product-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  width: max-content;
+  gap: 0.5rem;
+  width: 100%;
+  height: max-content;
 }
 
 .product-card {
-  object-fit: cover;
   width: 300px;
-  height: max-content;
+  height: 300px;
   padding: 0.5rem;
   border-radius: 8px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -345,6 +356,111 @@ button {
   color: #fff;
   background-color: #000;
 }
+
+/* Admin Section */
+.admin {
+  display: flex;
+  margin: 50px 10%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 29px 0px;
+  padding: 1rem;
+  height: 100dvh;
+}
+
+.admin .admin-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-right: 1rem;
+  border-right: 1px solid #ddd;
+}
+
+.admin-menu .admin-panel-list .order-panel-button,
+.admin-menu .admin-panel-list .product-panel-button {
+  cursor: pointer;
+  box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
+  padding: 1rem;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.admin-menu .admin-panel-list .order-panel-button:hover,
+.admin-menu .admin-panel-list .product-panel-button:hover {
+  background-color: rgba(100, 100, 111, 0.3);
+}
+
+.admin-menu .admin-panel-list .order-panel-button.active,
+.admin-menu .admin-panel-list .product-panel-button.active {
+  background-color: rgba(100, 100, 111, 0.3);
+}
+
+.admin .admin-page {
+  padding: 0 1rem;
+  width: 90%;
+}
+
+.admin-order-panel h1,
+.admin-product-panel h1 {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+}
+
+.admin-order-panel table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+}
+
+.admin-order-panel .tbl-header {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.admin-order-panel .tbl-content {
+  height: 600px;
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.admin-order-panel .tbl-content .order-detail-button {
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+  padding: 0.6rem;
+  margin-left: 15px;
+  border-radius: 6px;
+  transition: 0.2s;
+  display: inline-block;
+}
+
+.admin-order-panel .tbl-content .order-detail-button:hover {
+  opacity: 0.7;
+}
+
+.admin-order-panel th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.admin-order-panel td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 12px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.1);
+}
+
+.admin-product-panel {
+  height: 800px;
+  overflow-x: auto;
+}
+
 /* Footer Section */
 footer {
   background-color: #80bddf;
@@ -388,4 +504,16 @@ footer .sitemap ul li {
 
 footer li:hover {
   text-decoration: underline;
+}
+
+/* for custom scrollbar for webkit browser*/
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }

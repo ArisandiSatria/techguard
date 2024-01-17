@@ -27,27 +27,27 @@ export default function Header() {
           <li>contact</li>
         </Link>
       </ul>
-      <Link to={"/profile"} style={{ textDecoration: "none" }}>
-        <div className="auth-button">
-          {user ? (
-            <div>
+      <div className="auth-button">
+        {user ? (
+          <div>
+            <Link to={"/profile"} style={{ textDecoration: "none" }}>
               <CiUser className="icon" style={{ color: "black" }} />
-              <Link to={"/cart"} style={{ color: "black" }}>
-                <BsCart3 className="icon" />
-              </Link>
-            </div>
-          ) : (
-            <>
-              <Link to={"/login"} style={{ textDecoration: "none" }}>
-                <p className="login">Login</p>
-              </Link>
-              <Link to={"/register"} style={{ textDecoration: "none" }}>
-                <p className="register">Register</p>
-              </Link>
-            </>
-          )}
-        </div>
-      </Link>
+            </Link>
+            <Link to={"/cart"} style={{ color: "black" }}>
+              <BsCart3 className="icon" />
+            </Link>
+          </div>
+        ) : (
+          <>
+            <Link to={"/login"} style={{ textDecoration: "none" }}>
+              <p className="login">Login</p>
+            </Link>
+            <Link to={"/register"} style={{ textDecoration: "none" }}>
+              <p className="register">Register</p>
+            </Link>
+          </>
+        )}
+      </div>
     </header>
   );
 }

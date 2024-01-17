@@ -1,10 +1,14 @@
 import React from "react";
-// import { CiUser } from "react-icons/ci";
-// import { BsCart3 } from "react-icons/bs";
+import { CiUser } from "react-icons/ci";
+import { BsCart3 } from "react-icons/bs";
 
 import { Link } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userIsLoggedIn } from "../state/selector/loggedInUser.js";
 
 export default function Header() {
+  const user = useRecoilValue(userIsLoggedIn);
+  console.log(user);
   return (
     <header>
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -25,13 +29,24 @@ export default function Header() {
         </Link>
       </ul>
       <div className="auth-button">
-        {/* <CiUser className="icon" />
-        <BsCart3 className="icon" /> */}
-        <Link to={"/login"} style={{ textDecoration: "none" }}>
-          <p className="login">Login</p>
-        </Link>
-        <Link to={"/register"} style={{ textDecoration: "none" }}>
-          <p className="register">Register</p>
+        <Link to={"/profile"}>
+          {user ? (
+            <div>
+              <CiUser className="icon" />
+              <Link to={"/cart"} style={{ color: "black" }}>
+                <BsCart3 className="icon" />
+              </Link>
+            </div>
+          ) : (
+            <div>
+              <Link to={"/login"} style={{ textDecoration: "none" }}>
+                <p className="login">Login</p>
+              </Link>
+              <Link to={"/register"} style={{ textDecoration: "none" }}>
+                <p className="register">Register</p>
+              </Link>
+            </div>
+          )}
         </Link>
       </div>
     </header>

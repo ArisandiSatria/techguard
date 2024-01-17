@@ -21,13 +21,7 @@ export default function Product() {
       <div className="filter">
         <h3>Filter</h3>
         <div>
-          <input
-            type="radio"
-            checked
-            value={""}
-            name="filterSelected"
-            id="all"
-          />
+          <input type="radio" defaultChecked name="filterSelected" id="all" />
           <label htmlFor="all"> All</label>
         </div>
         <div>

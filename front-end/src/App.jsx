@@ -10,10 +10,14 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import ShoppingCart from "./pages/ShopCart.jsx";
+import PrivateRoute from "./components/PrivateRoute.jsx";
 import Admin from "./pages/Admin.jsx";
+import { useRecoilValue } from "recoil";
+import { userIsLoggedIn } from "./state/selector/loggedInUser.js";
 
 function App() {
   const location = useLocation();
+  const user = useRecoilValue(userIsLoggedIn);
 
   const routesWithoutHeaderAndFooter = ["/login", "/register"];
 
@@ -30,7 +34,12 @@ function App() {
         <Route path="/products" element={<Product />} />/
         <Route path="/products/:id" element={<ProductDetail />} />/
         <Route path="/cart" element={<ShoppingCart />} />/
-        <Route path="/admin" element={<Admin />} />/
+        <Route element={<PrivateRoute />}>
+          <Route
+            path="/profile"
+            element={user && user.role == "customer" ? "" : <Admin />}
+          />
+        </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
       {showHeaderAndFooter && <Footer />}

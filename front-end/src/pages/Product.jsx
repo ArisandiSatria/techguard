@@ -76,9 +76,13 @@ export default function Product() {
                   <p>{product.name}</p>
                   <div className="product-card-footer">
                     <p>Rp {product.price?.toLocaleString("en-US")}</p>
-                    <p onClick={handleSubmit} className="button">
-                      Buy Now
-                    </p>
+                    {userData.role == "admin" ? (
+                      ""
+                    ) : (
+                      <p onClick={handleSubmit} className="button">
+                        Buy Now
+                      </p>
+                    )}
                   </div>
                 </div>
               </Link>

@@ -106,13 +106,16 @@ export default function AddProduct() {
         return setError("You must upload at least 1 image!");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/product/add-product", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      const res = await fetch(
+        "https://coding-studio-fp.vercel.app/api/product/add-product",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await res.json();
       setLoading(false);
       if (data.success == false) {

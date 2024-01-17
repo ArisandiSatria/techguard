@@ -5,8 +5,8 @@ export default function AdminOrder() {
     <div className="admin-order-panel">
       <section>
         <h1>Order List</h1>
-        <div class="tbl-header">
-          <table cellpadding="0" cellspacing="0" border="0">
+        <div className="tbl-header">
+          <table cellPadding="0" cellSpacing="0" border="0">
             <thead>
               <tr>
                 <th>Order ID</th>
@@ -18,8 +18,8 @@ export default function AdminOrder() {
             </thead>
           </table>
         </div>
-        <div class="tbl-content">
-          <table cellpadding="0" cellspacing="0" border="0">
+        <div className="tbl-content">
+          <table cellPadding="0" cellSpacing="0" border="0">
             <tbody>
               <tr>
                 <td>123</td>

@@ -4,7 +4,7 @@ import { errorHandler } from "../utils/errorHandler.js";
 export const addProduct = async (req, res, next) => {
   const { name, category, description } = req.body;
 
-  if (!name || !category || !description) {
+  if (!name || !category || !description || !price) {
     return next(errorHandler(400, "Please, fill all input!"));
   }
 

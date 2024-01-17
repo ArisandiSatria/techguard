@@ -111,7 +111,7 @@ export const forgotPassword = async (req, res, next) => {
     text: `
     You've requested to reset password. Click link below to reset your password!
 
-    http://localhost:5173/reset_password/${user._id}/${token}
+    https://coding-studio-fp.vercel.app/reset_password/${user._id}/${token}
     
     Note: If you never request to reset your password. Please, ignore this message!
     `,

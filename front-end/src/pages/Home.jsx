@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 export default function Home() {
   return (
     <div className="home">
-      {/* Hero Section */}
       <div className="hero">
         <img src="images/techguard-logo.jpg" alt="logo" />
         <div className="hero-content">
@@ -14,13 +13,12 @@ export default function Home() {
             Machinery,Face Recognition, Access Door Control, CCTV with best
             quality products and affordable prices.
           </p>
-          <Link to={"/product"} style={{ textDecoration: "none" }}>
+          <Link to={"/products"} style={{ textDecoration: "none" }}>
             <h3>CHECK OUR PRODUCT NOW!</h3>
           </Link>
         </div>
       </div>
 
-      {/* Featurs Section */}
       <div className="features">
         <div>
           <img src="images/feature-1.jpg" alt="" />
@@ -51,7 +49,6 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Product Section */}
       <div className="product">
         <h3>OUR PRODUCT</h3>
         <div className="product-sample">

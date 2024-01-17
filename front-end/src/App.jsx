@@ -10,6 +10,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import ProductDetail from "./pages/ProductDetail.jsx";
 import ShoppingCart from "./pages/ShopCart.jsx";
+import profile from "./pages/UserProfile.jsx";
 import Admin from "./pages/Admin.jsx";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="/products" element={<Product />} />/
         <Route path="/products/:id" element={<ProductDetail />} />/
         <Route path="/cart" element={<ShoppingCart />} />/
+        <Route path="/Profile" element={<UserProfile />} />/
         <Route path="/admin" element={<Admin />} />/
         <Route path="*" element={<NotFound />} />
       </Routes>

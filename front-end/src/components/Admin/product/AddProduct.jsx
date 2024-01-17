@@ -20,7 +20,6 @@ export default function AddProduct() {
     category: "fingerprint-attendance",
     description: "",
     price: 0,
-    packages: "",
     specifications: [],
     note: "",
     images: [],
@@ -117,7 +116,7 @@ export default function AddProduct() {
       const data = await res.json();
       setLoading(false);
       if (data.success == false) {
-        setError(data.message);
+        return setError(data.message);
       }
       window.location.reload();
     } catch (error) {
@@ -165,7 +164,7 @@ export default function AddProduct() {
           />
         </div>
         <div className="add-product-form">
-          <label htmlFor="price">Price</label>
+          <label htmlFor="price">Price *</label>
           <input
             type="number"
             min="0"
@@ -173,15 +172,6 @@ export default function AddProduct() {
             onChange={handleChange}
             value={formData.price}
             required
-          />
-        </div>
-        <div className="add-product-form">
-          <label htmlFor="packages">Packages</label>
-          <input
-            type="text"
-            id="packages"
-            onChange={handleChange}
-            value={formData.packages}
           />
         </div>
         <div className="add-product-form">
@@ -299,8 +289,23 @@ export default function AddProduct() {
               </button>
             </div>
           ))}
-
-        <button className="add-product-form-button">Add New Product</button>
+        <button
+          disabled={loading || uploading}
+          className="add-product-form-button"
+        >
+          {loading ? "Adding..." : "Add New Product"}
+        </button>
+        {error && (
+          <p
+            style={{
+              color: "red",
+              fontSize: "small",
+              fontStyle: "italic",
+            }}
+          >
+            {error}
+          </p>
+        )}
       </div>
     </form>
   );

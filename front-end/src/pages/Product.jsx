@@ -1,13 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Product() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      const res = await fetch("/api/product/");
+      const data = await res.json();
+      if (data.success == false) {
+        setError(data.message);
+      }
+      setProducts(data);
+    };
+
+    fetchAllProducts();
+  }, []);
   return (
     <div className="product-page">
       <div className="filter">
         <h3>Filter</h3>
         <div>
-          <input type="radio" name="filterSelected" id="all" />
+          <input
+            type="radio"
+            checked
+            value={""}
+            name="filterSelected"
+            id="all"
+          />
           <label htmlFor="all"> All</label>
         </div>
         <div>
@@ -35,50 +55,29 @@ export default function Product() {
         </div>
       </div>
 
-      <div className="product-section">
-        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
-          <div className="product-card">
-            <img src="images/product-1.jpg" alt="" />
-            <p>product name</p>
-            <div className="product-card-footer">
-              <p>Rp 100.000</p>
-              <p className="button">Buy Now</p>
-            </div>
-          </div>
-        </Link>
-
-        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
-          <div className="product-card">
-            <img src="images/product-2.jpg" alt="" />
-            <p>product name</p>
-            <div className="product-card-footer">
-              <p>Rp 100.000</p>
-              <p className="button">Buy Now</p>
-            </div>
-          </div>
-        </Link>
-
-        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
-          <div className="product-card">
-            <img src="images/product-3.jpg" alt="" />
-            <p>product name</p>
-            <div className="product-card-footer">
-              <p>Rp 100.000</p>
-              <p className="button">Buy Now</p>
-            </div>
-          </div>
-        </Link>
-
-        <Link to={"/products/1"} style={{ textDecoration: "none" }}>
-          <div className="product-card">
-            <img src="images/product-4.jpg" alt="" />
-            <p>product name</p>
-            <div className="product-card-footer">
-              <p>Rp 100.000</p>
-              <p className="button">Buy Now</p>
-            </div>
-          </div>
-        </Link>
+      <div className="product-section-page">
+        <div className="product-section">
+          {products.length > 0 ? (
+            products.map((product, index) => (
+              <Link
+                key={product.name + index}
+                to={`/products/${product._id}`}
+                style={{ textDecoration: "none" }}
+              >
+                <div className="product-card">
+                  <img src={product.images[0]} alt={product.name} />
+                  <p>{product.name}</p>
+                  <div className="product-card-footer">
+                    <p>Rp {product.price?.toLocaleString("en-US")}</p>
+                    <p className="button">Buy Now</p>
+                  </div>
+                </div>
+              </Link>
+            ))
+          ) : (
+            <p>No Product</p>
+          )}
+        </div>
       </div>
     </div>
   );

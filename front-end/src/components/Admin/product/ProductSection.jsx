@@ -1,39 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function ProductSection() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchAllProducts = async () => {
+      const res = await fetch("/api/product/");
+      const data = await res.json();
+      if (data.success == false) {
+        setError(data.message);
+      }
+      setProducts(data);
+    };
+
+    fetchAllProducts();
+  }, []);
+
   return (
     <div className="product-section">
-      <div className="product-card">
-        <img src="images/product-1.jpg" alt="" />
-        <p>product name</p>
-        <div className="product-card-footer">
-          <p>Rp 100.000</p>
-        </div>
-      </div>
-
-      <div className="product-card">
-        <img src="images/product-2.jpg" alt="" />
-        <p>product name</p>
-        <div className="product-card-footer">
-          <p>Rp 100.000</p>
-        </div>
-      </div>
-
-      <div className="product-card">
-        <img src="images/product-3.jpg" alt="" />
-        <p>product name</p>
-        <div className="product-card-footer">
-          <p>Rp 100.000</p>
-        </div>
-      </div>
-
-      <div className="product-card">
-        <img src="images/product-4.jpg" alt="" />
-        <p>product name</p>
-        <div className="product-card-footer">
-          <p>Rp 100.000</p>
-        </div>
-      </div>
+      {products.length > 0 ? (
+        products.map((product, index) => (
+          <div key={product.name + index} className="product-card">
+            <img src={product.images[0]} alt={product.name} />
+            <p>{product.name}</p>
+            <div className="product-card-footer">
+              <p>Rp {product.price?.toLocaleString("en-US")}</p>
+            </div>
+          </div>
+        ))
+      ) : (
+        <p>No Product</p>
+      )}
     </div>
   );
 }

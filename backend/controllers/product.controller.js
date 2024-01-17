@@ -2,7 +2,7 @@ import Product from "../models/product.model.js";
 import { errorHandler } from "../utils/errorHandler.js";
 
 export const addProduct = async (req, res, next) => {
-  const { name, category, description } = req.body;
+  const { name, category, description, price } = req.body;
 
   if (!name || !category || !description || !price) {
     return next(errorHandler(400, "Please, fill all input!"));

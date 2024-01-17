@@ -8,7 +8,6 @@ import { userIsLoggedIn } from "../state/selector/loggedInUser.js";
 
 export default function Header() {
   const user = useRecoilValue(userIsLoggedIn);
-  console.log(user);
   return (
     <header>
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -28,27 +27,27 @@ export default function Header() {
           <li>contact</li>
         </Link>
       </ul>
-      <div className="auth-button">
-        <Link to={"/profile"}>
+      <Link to={"/profile"} style={{ textDecoration: "none" }}>
+        <div className="auth-button">
           {user ? (
             <div>
-              <CiUser className="icon" />
+              <CiUser className="icon" style={{ color: "black" }} />
               <Link to={"/cart"} style={{ color: "black" }}>
                 <BsCart3 className="icon" />
               </Link>
             </div>
           ) : (
-            <div>
+            <>
               <Link to={"/login"} style={{ textDecoration: "none" }}>
                 <p className="login">Login</p>
               </Link>
               <Link to={"/register"} style={{ textDecoration: "none" }}>
                 <p className="register">Register</p>
               </Link>
-            </div>
+            </>
           )}
-        </Link>
-      </div>
+        </div>
+      </Link>
     </header>
   );
 }

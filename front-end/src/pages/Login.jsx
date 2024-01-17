@@ -48,7 +48,7 @@ export default function Login() {
     <>
       <div className="auth-form-container">
         <form onSubmit={handleSubmit}>
-          <label htmlfor="email">email</label>
+          <label htmlFor="email">email</label>
           <div>
             <input
               onChange={handleChange}
@@ -60,7 +60,7 @@ export default function Login() {
           </div>
 
           <div className="Password">
-            <label htmlfor="Password">Password</label>
+            <label htmlFor="Password">Password</label>
             <input
               onChange={handleChange}
               type="Password"

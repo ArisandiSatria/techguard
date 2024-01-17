@@ -14,7 +14,7 @@ const PrivateRoute = () => {
   return userData && isCookiePresent ? (
     <Outlet />
   ) : (
-    (setUser(null), (<Navigate to="/login" />))
+    (setUser(null), (<Navigate to="/" />))
   );
 };
 

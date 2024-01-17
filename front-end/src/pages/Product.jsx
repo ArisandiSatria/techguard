@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userIsLoggedIn } from "../state/selector/loggedInUser";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
+  const userData = useRecoilValue(userIsLoggedIn);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllProducts = async () => {
@@ -16,6 +21,14 @@ export default function Product() {
 
     fetchAllProducts();
   }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!userData) {
+      navigate("/login");
+      return;
+    }
+  };
   return (
     <div className="product-page">
       <div className="filter">
@@ -63,7 +76,9 @@ export default function Product() {
                   <p>{product.name}</p>
                   <div className="product-card-footer">
                     <p>Rp {product.price?.toLocaleString("en-US")}</p>
-                    <p className="button">Buy Now</p>
+                    <p onClick={handleSubmit} className="button">
+                      Buy Now
+                    </p>
                   </div>
                 </div>
               </Link>

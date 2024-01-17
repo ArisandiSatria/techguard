@@ -13,6 +13,8 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 
+app.use(cors());
+
 app.listen(PORT, () => {
   console.log(`Server is running from port ${PORT}`);
 });

@@ -70,11 +70,11 @@ export const login = async (req, res, next) => {
     res
       .cookie("access_token", token, {
         secure: true,
-        domain: ".vercel.app",
+        // domain: ".vercel.app",
         httpOnly: false,
       })
       .status(200)
-      .json(rest);
+      .json({ ...rest, token });
   } catch (error) {
     next(error);
   }

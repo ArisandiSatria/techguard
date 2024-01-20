@@ -10,9 +10,7 @@ const UserProfile = () => {
 
   const handleLogOut = async () => {
     try {
-      const res = await fetch(
-        "https://coding-studio-fp.vercel.app/api/auth/logout"
-      );
+      const res = await fetch("/api/auth/logout");
       const data = await res.json();
       if (data.success == false) {
         setError(data.message);

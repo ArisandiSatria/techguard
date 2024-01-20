@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import { userState } from "../state/atom/userState";
+// import Cookies from "js-cookie";
 
 export default function Login() {
   const [formData, setFormData] = useState({});
@@ -16,6 +17,11 @@ export default function Login() {
       [event.target.id]: event.target.value,
     });
   };
+
+  // const setCookie = (cookie) => {
+  //   Cookies.set("access_token", cookie);
+  //   localStorage.setItem("access_token", cookie);
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -39,6 +45,7 @@ export default function Login() {
         return;
       }
       setUser(data);
+      // setCookie(data.token);
       setLoading(false);
       setError(null);
       navigate("/");

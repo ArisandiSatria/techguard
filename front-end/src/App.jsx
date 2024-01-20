@@ -18,7 +18,7 @@ import { userIsLoggedIn } from "./state/selector/loggedInUser.js";
 
 function App() {
   const location = useLocation();
-  const user = useRecoilValue(userIsLoggedIn);
+  const userData = useRecoilValue(userIsLoggedIn);
 
   const routesWithoutHeaderAndFooter = ["/login", "/register"];
 
@@ -39,7 +39,11 @@ function App() {
           <Route
             path="/profile"
             element={
-              user && user.role == "customer" ? <UserProfile /> : <Admin />
+              userData && userData.role == "customer" ? (
+                <UserProfile />
+              ) : (
+                <Admin />
+              )
             }
           />
         </Route>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
 import AdminOrder from "../components/Admin/AdminOrder";
 import AdminProduct from "../components/Admin/AdminProduct";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { userIsLoggedIn } from "../state/selector/loggedInUser";
 import { userState } from "../state/atom/userState";
+import Cookies from "js-cookie";
 
 export default function Admin() {
   const [adminPage, setAdminPage] = useState("order");
@@ -24,6 +23,7 @@ export default function Admin() {
         setError(data.message);
         return;
       }
+      Cookies.remove("access_token");
       setUser(null);
       setError(null);
     } catch (error) {

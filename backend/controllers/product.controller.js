@@ -64,20 +64,9 @@ export const getAllProducts = async (req, res, next) => {
   }
 };
 
-export const getProduct = async (req, res, next) => {
-  const products = await Product.find({ category: req.params.category });
-
-  try {
-    res.status(200).json(products);
-  } catch (error) {
-    next(error);
-  }
-};
-
 export const getProductDetail = async (req, res, next) => {
   try {
     const product = await Product.findOne({
-      category: req.params.category,
       _id: req.params.id,
     });
 

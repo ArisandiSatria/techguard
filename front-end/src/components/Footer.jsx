@@ -8,7 +8,7 @@ export default function Footer() {
   return (
     <footer>
       <div className="footer-content">
-        <img src="images/techguard-logo_footer.png" alt="jpg" />
+        <img src="/images/techguard-logo_footer.png" alt="jpg" />
         <p>
           Tekno Biometric Security provides services in the fields of
           installation & maintenance of Fingerprint Absence Machines, Face

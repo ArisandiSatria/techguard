@@ -5,20 +5,25 @@ import { userIsLoggedIn } from "../state/selector/loggedInUser";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const userData = useRecoilValue(userIsLoggedIn);
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAllProducts = async () => {
+      setLoading(true);
       const res = await fetch(
         "https://coding-studio-fp.vercel.app/api/product/"
       );
       const data = await res.json();
       if (data.success == false) {
+        setLoading(false);
         setError(data.message);
       }
       setProducts(data);
+      setLoading(false);
     };
 
     fetchAllProducts();
@@ -65,34 +70,38 @@ export default function Product() {
       </div>
 
       <div className="product-section-page">
-        <div className="product-section">
-          {products.length > 0 ? (
-            products.map((product, index) => (
-              <Link
-                key={product.name + index}
-                to={`/products/${product._id}`}
-                style={{ textDecoration: "none" }}
-              >
-                <div className="product-card">
-                  <img src={product.images[0]} alt={product.name} />
-                  <p>{product.name}</p>
-                  <div className="product-card-footer">
-                    <p>Rp {product.price?.toLocaleString("en-US")}</p>
-                    {userData.role == "admin" ? (
-                      ""
-                    ) : (
-                      <p onClick={handleSubmit} className="button">
-                        Buy Now
-                      </p>
-                    )}
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <div className="product-section">
+            {products.length > 0 ? (
+              products.map((product, index) => (
+                <Link
+                  key={product.name + index}
+                  to={`/product/${product._id}`}
+                  style={{ textDecoration: "none" }}
+                >
+                  <div className="product-card">
+                    <img src={product.images[0]} alt={product.name} />
+                    <p>{product.name}</p>
+                    <div className="product-card-footer">
+                      <p>Rp {product.price?.toLocaleString("en-US")}</p>
+                      {userData.role == "admin" ? (
+                        ""
+                      ) : (
+                        <p onClick={handleSubmit} className="button">
+                          Buy Now
+                        </p>
+                      )}
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <p>No Product</p>
-          )}
-        </div>
+                </Link>
+              ))
+            ) : (
+              <p>No Product</p>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

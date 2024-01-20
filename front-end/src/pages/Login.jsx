@@ -20,7 +20,6 @@ export default function Login() {
 
   const setCookie = (cookie) => {
     Cookies.set("access_token", cookie, { expires: 1 });
-    localStorage.setItem("access_token", cookie);
   };
 
   const handleSubmit = async (event) => {

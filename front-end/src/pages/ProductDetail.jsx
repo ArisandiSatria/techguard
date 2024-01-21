@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { RotatingLines } from "react-loader-spinner";
 import { Link, useParams } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { userIsLoggedIn } from "../state/selector/loggedInUser";
 
 export default function DetailProduct() {
   const [error, setError] = useState(null);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const user = useRecoilValue(userIsLoggedIn);
 
   const { id } = useParams();
 
@@ -31,32 +36,73 @@ export default function DetailProduct() {
   }, [id]);
 
   return (
-    <div>
+    <>
       {loading ? (
-        <p>Loading...</p>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: "70%",
+          }}
+        >
+          <RotatingLines
+            visible={true}
+            height="100"
+            width="100"
+            strokeColor="black"
+            strokeWidth="5"
+            animationDuration="0.75"
+            ariaLabel="rotating-lines-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+          />
+        </div>
       ) : (
         <>
-          <Link to="/products" style={{ textDecoration: "none" }}>
-            <button>Back</button>
-          </Link>
-          <img src={product?.images[0]} alt="product image" />
-          <div>
-            <h3>{product?.name}</h3>
-            <p>{product?.category && product?.category}</p>
-            <p>{product?.description && product?.description}</p>
-            <h4>Rp {product?.price.toLocaleString("en-US")}</h4>
-
+          <div className="product-detail-page">
             <div>
-              <p>Feature:</p>
-              <ul>
-                {product?.specification &&
-                  product?.specification.map((spec) => <li>{spec}</li>)}
-              </ul>
+              <Link to="/products">
+                <button
+                  style={{
+                    textDecoration: "none",
+                    marginBottom: "1rem",
+                  }}
+                >
+                  Back
+                </button>
+              </Link>
+              <img src={product?.images[0]} alt="product image" />
+              <p className="note">
+                Note: {product?.note && product?.note}this is a note
+              </p>
             </div>
-            <p>{product?.note && product?.note}</p>
+            <div>
+              <h3>{product?.name}</h3>
+              <p className="category">
+                {product?.category && product?.category}
+              </p>
+              <p>{product?.description && product?.description}</p>
+              <h4 className="price">
+                Rp {product?.price.toLocaleString("en-US")}{" "}
+                <span className="real-price">
+                  Rp {(product?.price + 100000).toLocaleString("en-US")}
+                </span>
+              </h4>
+
+              <div>
+                <p>Feature:</p>
+                <ul>
+                  {product &&
+                    product?.specifications.map((spec) => <li>{spec}</li>)}
+                </ul>
+              </div>
+
+              {user.role == "admin" ? "" : <p className="button">Buy Now</p>}
+            </div>
           </div>
         </>
       )}
-    </div>
+    </>
   );
 }

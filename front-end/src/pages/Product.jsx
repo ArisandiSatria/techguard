@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userIsLoggedIn } from "../state/selector/loggedInUser";
+import { RotatingLines } from "react-loader-spinner";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
@@ -71,7 +72,26 @@ export default function Product() {
 
       <div className="product-section-page">
         {loading ? (
-          <p>Loading...</p>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              height: "70%",
+            }}
+          >
+            <RotatingLines
+              visible={true}
+              height="100"
+              width="100"
+              strokeColor="black"
+              strokeWidth="5"
+              animationDuration="0.75"
+              ariaLabel="rotating-lines-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+            />
+          </div>
         ) : (
           <div className="product-section">
             {products.length > 0 ? (
@@ -86,7 +106,7 @@ export default function Product() {
                     <p>{product.name}</p>
                     <div className="product-card-footer">
                       <p>Rp {product.price?.toLocaleString("en-US")}</p>
-                      {userData.role == "admin" ? (
+                      {userData?.role == "admin" ? (
                         ""
                       ) : (
                         <p onClick={handleSubmit} className="button">

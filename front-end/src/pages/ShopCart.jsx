@@ -1,39 +1,35 @@
 import React, { useState } from "react";
+import { cart } from "../state/selector/cart";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { cartState } from "../state/atom/cartState";
 
 const ShoppingCart = () => {
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useRecoilState(cartState);
+  const currentCart = useRecoilValue(cart);
 
-  const addItemToCart = (item) => {
-    setCartItems([...cartItems, item]);
-  };
-
-  const removeItemFromCart = (item) => {
-    setCartItems(cartItems.filter((i) => i.id !== item.id));
-  };
-
-  const totalPrice = cartItems.reduce((total, item) => {
-    return total + item.price * item.quantity;
-  }, 0);
+  console.log(currentCart);
 
   return (
     <div>
       <h1>Shopping Cart</h1>
       <ul>
-        {cartItems.map((item) => (
+        {currentCart?.map((item) => (
           <li key={item.id}>
-            {item.name} - ${item.price} x {item.quantity}
-            <button onClick={() => removeItemFromCart(item)}>Remove</button>
+            {item.name} - Rp {item.price}
           </li>
         ))}
       </ul>
-      <p>Total Price: ${totalPrice}</p>
-      <button>Checkout</button>
+      {/* <p>Total Price: ${totalPrice}</p>
+      <button>Checkout</button> */}
+      {/* <ul>
+        {userCart?.map((item) => (
+          <li key={item.id}>
+            {item.name} - Quantity: {item.quantity}
+          </li>
+        ))}
+      </ul>*/}
       <button onClick={() => setCartItems([])}>Clear Cart</button>
-      <button
-        onClick={() => addItemToCart({ id: 1, name: "Item 1", price: 10 })}
-      >
-        Add Item
-      </button>
+      <button>Add Item</button>
     </div>
   );
 };

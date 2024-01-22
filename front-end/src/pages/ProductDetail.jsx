@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { Link, useParams } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { cartState } from "../state/atom/cartState";
 import { userIsLoggedIn } from "../state/selector/loggedInUser";
 
 export default function DetailProduct() {
   const [error, setError] = useState(null);
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [cart, setCart] = useRecoilState(cartState);
 
   const user = useRecoilValue(userIsLoggedIn);
 
@@ -34,6 +36,17 @@ export default function DetailProduct() {
 
     fetchProductDetail();
   }, [id]);
+
+  const addToCart = () => {
+    const isProductInCart = cart.find((item) => item._id === product._id);
+
+    if (isProductInCart) {
+      // setCart((prevCart) => [...prevCart, product]);
+      return;
+    } else {
+      setCart([...cart, product]);
+    }
+  };
 
   return (
     <>
@@ -73,9 +86,7 @@ export default function DetailProduct() {
                 </button>
               </Link>
               <img src={product?.images[0]} alt="product image" />
-              <p className="note">
-                Note: {product?.note && product?.note}this is a note
-              </p>
+              {product?.note && <p className="note">Note: {product?.note}</p>}
             </div>
             <div>
               <h3>{product?.name}</h3>
@@ -94,11 +105,19 @@ export default function DetailProduct() {
                 <p>Feature:</p>
                 <ul>
                   {product &&
-                    product?.specifications.map((spec) => <li>{spec}</li>)}
+                    product?.specifications.map((spec, index) => (
+                      <li key={spec + index}>{spec}</li>
+                    ))}
                 </ul>
               </div>
 
-              {user.role == "admin" ? "" : <p className="button">Buy Now</p>}
+              {user.role == "admin" ? (
+                ""
+              ) : (
+                <p onClick={addToCart} className="button">
+                  Buy Now
+                </p>
+              )}
             </div>
           </div>
         </>

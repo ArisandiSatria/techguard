@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import {
   getDownloadURL,
@@ -8,7 +8,7 @@ import {
 } from "firebase/storage";
 import { app } from "../../../firebase.js";
 
-export default function AddProduct() {
+export default function EditProduct({ id, product }) {
   const [files, setFiles] = useState([]);
   const [uploadImageError, setUploadImageError] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -24,6 +24,10 @@ export default function AddProduct() {
     note: "",
     images: [],
   });
+
+  useEffect(() => {
+    setFormData(product);
+  }, [id]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -106,7 +110,7 @@ export default function AddProduct() {
         return setError("You must upload at least 1 image!");
       setLoading(true);
       setError(false);
-      const res = await fetch("/api/product/add-product", {
+      const res = await fetch(`/api/product/edit-product/${id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -118,7 +122,7 @@ export default function AddProduct() {
       if (data.success == false) {
         return setError(data.message);
       }
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       setError(error.message);
       setLoading(false);

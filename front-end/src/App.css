@@ -476,6 +476,51 @@ button:hover {
   text-align: center;
 }
 
+.admin-product-panel .edit {
+  display: flex;
+  align-items: center;
+  background-color: yellow;
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-product-panel .edit:hover {
+  background-color: rgb(175, 175, 2);
+}
+
+.admin-product-panel .abort-edit {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  background-color: rgb(220, 3, 3);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-product-panel .abort-edit:hover {
+  background-color: rgb(130, 2, 2);
+}
+
+.admin-product-panel .delete-product {
+  display: flex;
+  align-items: center;
+  color: rgb(220, 3, 3);
+  border: 2px solid rgb(220, 3, 3);
+  border-radius: 6px;
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-product-panel .delete-product:hover {
+  background-color: rgb(220, 3, 3);
+  color: #fff;
+}
+
 .admin-order-panel table {
   width: 100%;
   table-layout: fixed;

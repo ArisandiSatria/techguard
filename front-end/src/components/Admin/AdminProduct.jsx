@@ -58,7 +58,7 @@ export default function AdminProduct() {
         </p>
         <div style={{ display: "flex", alignItems: "center", gap: ".5rem" }}>
           {detail && !addProduct && !editProduct && (
-            <p onClick={handleDeleteProduct} className="delete-product">
+            <p onClick={handleDeleteProduct} className="delete-product-button">
               Delete Product
             </p>
           )}

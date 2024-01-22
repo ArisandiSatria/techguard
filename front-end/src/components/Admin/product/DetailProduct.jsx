@@ -59,21 +59,17 @@ export default function DetailProduct({ id, edit }) {
           ) : (
             <div className="product-detail-page">
               <div>
-                {product?._id && product?._id}
                 <img src={product?.images[0]} alt="product image" />
                 {product?.note && <p className="note">Note: {product?.note}</p>}
               </div>
               <div>
                 <h3>{product?.name}</h3>
                 <p className="category">
-                  {product?.category && product?.category}
+                  {product?.category && product?.category.replace(/-/g, " ")}
                 </p>
                 <p>{product?.description && product?.description}</p>
                 <h4 className="price">
                   Rp {product?.price.toLocaleString("en-US")}{" "}
-                  <span className="real-price">
-                    Rp {(product?.price + 100000).toLocaleString("en-US")}
-                  </span>
                 </h4>
 
                 <div>

@@ -122,7 +122,7 @@ export default function EditProduct({ id, product }) {
       if (data.success == false) {
         return setError(data.message);
       }
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       setError(error.message);
       setLoading(false);
@@ -233,7 +233,6 @@ export default function EditProduct({ id, product }) {
             id="images"
             accept="images/*"
             multiple
-            required
           />
           <button
             disabled={uploading}
@@ -298,7 +297,7 @@ export default function EditProduct({ id, product }) {
           disabled={loading || uploading}
           className="add-product-form-button"
         >
-          {loading ? "Adding..." : "Add New Product"}
+          {loading ? "Updating..." : "Update Product"}
         </button>
         {error && (
           <p

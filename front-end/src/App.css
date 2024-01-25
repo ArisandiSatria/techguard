@@ -475,6 +475,19 @@ button:hover {
   opacity: 0.7;
 }
 
+/* Order Section */
+.order-status.completed {
+  color: rgb(4, 181, 4);
+}
+
+.order-status.processing {
+  color: rgb(215, 215, 45);
+}
+
+.order-status.cancelled {
+  color: red;
+}
+
 /* Admin Section */
 .admin {
   display: flex;

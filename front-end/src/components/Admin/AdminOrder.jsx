@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
+import { Link } from "react-router-dom";
 
 export default function AdminOrder() {
   const [orders, setOrders] = useState([]);
@@ -37,10 +38,14 @@ export default function AdminOrder() {
     <div className="admin-order-panel">
       <section>
         <h1>Order List</h1>
+        <p style={{ fontWeight: "600" }}>
+          Total order: {orders.length} {orders.length > 1 ? "orders" : "order"}
+        </p>
         <div className="tbl-header">
           <table cellPadding="0" cellSpacing="0" border="0">
             <thead>
               <tr>
+                <th>Order Date</th>
                 <th>Order ID</th>
                 <th>User ID</th>
                 <th>Total Price</th>
@@ -77,6 +82,14 @@ export default function AdminOrder() {
                 <>
                   {orders?.map((order, index) => (
                     <tr key={order._id + index}>
+                      <td>
+                        {new Date(order.createdAt)
+                          .toISOString()
+                          .split("T")[0]
+                          .split("-")
+                          .reverse()
+                          .join("-")}
+                      </td>
                       <td
                         style={{
                           whiteSpace: "nowrap",
@@ -96,12 +109,23 @@ export default function AdminOrder() {
                         {order.userRef}
                       </td>
                       <td>Rp {order.totalPrice.toLocaleString("en-US")}</td>
-                      <td
-                        className={`order-status ${orderStatus(order.status)}`}
-                      >
-                        {order.status}
+                      <td>
+                        <span
+                          className={`order-status ${orderStatus(
+                            order.status
+                          )}`}
+                        >
+                          {order.status}
+                        </span>
                       </td>
-                      <td className="order-detail-button">Detail</td>
+                      <td className="order-detail-button">
+                        <Link
+                          to={`/order/${order._id}`}
+                          style={{ textDecoration: "none", color: "#fff" }}
+                        >
+                          Detail
+                        </Link>
+                      </td>
                     </tr>
                   ))}
                 </>

@@ -39,7 +39,7 @@ export default function Admin() {
             alt={userData.username}
             className="admin-profile-picture"
           />
-          <p>Hi! {userData.username}</p>
+          <p>Hi, {userData.username}!</p>
           <div className="admin-panel-list">
             <p
               onClick={() => setAdminPage("order")}

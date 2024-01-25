@@ -33,9 +33,11 @@ export default function Header() {
             <Link to={"/profile"} style={{ textDecoration: "none" }}>
               <CiUser className="icon" style={{ color: "black" }} />
             </Link>
-            <Link to={"/cart"} style={{ color: "black" }}>
-              <BsCart3 className="icon" />
-            </Link>
+            {user?.role == "customer" && (
+              <Link to={"/cart"} style={{ color: "black" }}>
+                <BsCart3 className="icon" />
+              </Link>
+            )}
           </div>
         ) : (
           <>

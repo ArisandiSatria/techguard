@@ -477,15 +477,27 @@ button:hover {
 
 /* Order Section */
 .order-status.completed {
-  color: rgb(4, 181, 4);
+  background-color: rgb(4, 181, 4);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.4rem;
+  font-weight: 600;
 }
 
 .order-status.processing {
-  color: rgb(215, 215, 45);
+  background-color: rgb(215, 215, 45);
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.4rem;
+  font-weight: 600;
 }
 
 .order-status.cancelled {
-  color: red;
+  background-color: red;
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.4rem;
+  font-weight: 600;
 }
 
 /* Admin Section */
@@ -538,7 +550,7 @@ button:hover {
 .admin-product-panel h1 {
   font-size: 30px;
   text-transform: uppercase;
-  font-weight: 300;
+  font-weight: 500;
   text-align: center;
 }
 

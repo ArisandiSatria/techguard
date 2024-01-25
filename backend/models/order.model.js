@@ -1,11 +1,5 @@
 import mongoose from "mongoose";
 
-// const orderItemSchema = new mongoose.Schema({
-//   product: { type: String, required: true },
-//   productImage: { type: String, required: true },
-//   quantity: { type: Number, required: true },
-// });
-
 const orderSchema = mongoose.Schema(
   {
     userRef: {
@@ -23,7 +17,7 @@ const orderSchema = mongoose.Schema(
     status: {
       type: String,
       default: "processing",
-      enum: ["processing", "cancelled", "completed"],
+      enum: ["processing", "rejected", "approved", "cancelled", "completed"],
     },
   },
   { timestamps: true }

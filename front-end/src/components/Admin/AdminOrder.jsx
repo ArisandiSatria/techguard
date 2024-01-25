@@ -29,6 +29,10 @@ export default function AdminOrder() {
       return "completed";
     } else if (status == "processing") {
       return "processing";
+    } else if (status == "approved") {
+      return "approved";
+    } else if (status == "rejected") {
+      return "rejected";
     } else {
       return "cancelled";
     }

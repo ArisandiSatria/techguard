@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { userIsLoggedIn } from "../state/selector/loggedInUser";
 import { RotatingLines } from "react-loader-spinner";
+import { cartState } from "../state/atom/cartState";
 
 export default function Product() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [cart, setCart] = useRecoilState(cartState);
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const userData = useRecoilValue(userIsLoggedIn);
 
@@ -30,12 +33,27 @@ export default function Product() {
     fetchAllProducts();
   }, []);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const addToCart = (product) => {
     if (!userData) {
       navigate("/login");
       return;
     }
+
+    const isProductInCart = cart.find((item) => item._id === product._id);
+
+    if (isProductInCart) {
+      // setCart((prevCart) => [...prevCart, product]);
+      alert("Product is already in the cart");
+      return;
+    } else {
+      setCart([...cart, product]);
+    }
+
+    setIsAddedToCart(true);
+
+    setTimeout(() => {
+      setIsAddedToCart(false);
+    }, 3000);
   };
   return (
     <div className="product-page">
@@ -109,9 +127,16 @@ export default function Product() {
                       {userData?.role == "admin" ? (
                         ""
                       ) : (
-                        <p onClick={handleSubmit} className="button">
+                        <button
+                          onClick={(event) => {
+                            event.preventDefault();
+                            addToCart(product);
+                          }}
+                          type="button"
+                          className="button"
+                        >
                           Buy Now
-                        </p>
+                        </button>
                       )}
                     </div>
                   </div>

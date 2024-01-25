@@ -22,7 +22,8 @@ body {
 
 .home,
 .product-page,
-.product-detail-page {
+.product-detail-page,
+.cart-page {
   padding: 0 10%;
 }
 
@@ -420,6 +421,57 @@ button:hover {
 }
 
 .product-detail-page .button:hover {
+  opacity: 0.7;
+}
+
+.cart-page {
+  height: 100dvh;
+}
+
+.cart-page-section {
+  display: flex;
+  gap: 10%;
+}
+
+.cart-item-section {
+  width: 50%;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 600;
+  border: 2px solid #000;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.cart-item img {
+  height: 150px;
+  width: 150px;
+  object-fit: contain;
+}
+
+.cart-order-summary {
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 0 0.5rem;
+  height: max-content;
+  width: 30%;
+}
+
+.cart-order-summary .button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cart-order-summary .button:hover {
   opacity: 0.7;
 }
 

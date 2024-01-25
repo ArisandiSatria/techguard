@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 
-const orderItemSchema = new mongoose.Schema({
-  product: { type: String, required: true },
-  productImage: { type: String, required: true },
-  quantity: { type: Number, required: true },
-});
+// const orderItemSchema = new mongoose.Schema({
+//   product: { type: String, required: true },
+//   productImage: { type: String, required: true },
+//   quantity: { type: Number, required: true },
+// });
 
 const orderSchema = mongoose.Schema(
   {
@@ -13,7 +13,7 @@ const orderSchema = mongoose.Schema(
       required: true,
     },
     items: {
-      type: [orderItemSchema],
+      type: Array,
       required: true,
     },
     totalPrice: {

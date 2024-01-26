@@ -11,7 +11,6 @@ export default function Header() {
   const user = useRecoilValue(userIsLoggedIn);
   const currentCart = useRecoilValue(cart);
 
-  console.log(currentCart);
   return (
     <header>
       <Link to="/" style={{ textDecoration: "none" }}>

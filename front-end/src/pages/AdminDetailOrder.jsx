@@ -95,7 +95,7 @@ export default function AdminDetailOrder() {
             <h3>Items: </h3>
             {order
               ? order?.items?.map((item, index) => (
-                  <div key={item.name + index} className="order-item-card">
+                  <div key={item._id + index} className="order-item-card">
                     <img src={item.images} alt={item.name} />
                     <p>{item.name}</p>
                     <p>{item.price}</p>
@@ -127,6 +127,8 @@ export default function AdminDetailOrder() {
             </p>
             <div className="button-update-order">
               <p
+                disabled={true}
+                type="button"
                 onClick={(e) => {
                   e.preventDefault();
                   updateOrder("rejected");

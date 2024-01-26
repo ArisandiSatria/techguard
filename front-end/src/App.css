@@ -794,6 +794,26 @@ button:disabled {
   font-size: medium;
   border-radius: 6px;
 }
+.button-update-order {
+  display: flex;
+  gap: 1rem;
+}
+
+.button-update-order .button {
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.button-update-order .button:hover {
+  opacity: 0.7;
+}
+
+.button-update-order .button:disabled {
+  opacity: 0.7;
+}
 
 .detail-order-status.completed,
 .detail-order-status.approved {

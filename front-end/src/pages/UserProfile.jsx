@@ -11,7 +11,7 @@ const UserProfile = () => {
   const [user, setUser] = useRecoilState(userState);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [userOrder, setUserOrder] = useState([]);
+  const [userTransaction, setUserTransaction] = useState([]);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -25,15 +25,13 @@ const UserProfile = () => {
         setError(data.message);
         return;
       }
-      setUserOrder(data);
+      setUserTransaction(data);
       setSearchParams({ userId: userData._id });
       setLoading(false);
     };
 
     fetchUserOrder();
   }, [userData._id, setSearchParams]);
-
-  console.log(userOrder);
 
   const handleLogOut = async () => {
     try {
@@ -50,6 +48,20 @@ const UserProfile = () => {
       setError(null);
     } catch (error) {
       setError(error.message);
+    }
+  };
+
+  const transactionStatus = (status) => {
+    if (status == "completed") {
+      return "completed";
+    } else if (status == "processing") {
+      return "processing";
+    } else if (status == "approved") {
+      return "approved";
+    } else if (status == "rejected") {
+      return "rejected";
+    } else {
+      return "cancelled";
     }
   };
 
@@ -118,10 +130,10 @@ const UserProfile = () => {
                 </div>
               ) : (
                 <>
-                  {userOrder?.map((order, index) => (
-                    <tr key={order._id + index}>
+                  {userTransaction?.map((transaction, index) => (
+                    <tr key={transaction._id + index}>
                       <td>
-                        {new Date(order.createdAt)
+                        {new Date(transaction.createdAt)
                           .toISOString()
                           .split("T")[0]
                           .split("-")
@@ -135,15 +147,23 @@ const UserProfile = () => {
                           textOverflow: "ellipsis",
                         }}
                       >
-                        {order._id}
+                        {transaction._id}
                       </td>
-                      <td>Rp {order.totalPrice.toLocaleString("en-US")}</td>
                       <td>
-                        <span className={`order-status`}>{order.status}</span>
+                        Rp {transaction.totalPrice.toLocaleString("en-US")}
                       </td>
-                      <td className="order-detail-button">
+                      <td>
+                        <span
+                          className={`user-transaction-status ${transactionStatus(
+                            transaction.status
+                          )}`}
+                        >
+                          {transaction.status}
+                        </span>
+                      </td>
+                      <td className="user-transaction-detail-button">
                         <Link
-                          to={`/order/${order._id}`}
+                          to={`/transaction/${transaction._id}`}
                           style={{ textDecoration: "none", color: "#fff" }}
                         >
                           Detail

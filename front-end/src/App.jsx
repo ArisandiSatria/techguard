@@ -15,7 +15,9 @@ import UserProfile from "./pages/UserProfile.jsx";
 import Admin from "./pages/Admin.jsx";
 import { useRecoilValue } from "recoil";
 import { userIsLoggedIn } from "./state/selector/loggedInUser.js";
-import DetailOrder from "./components/Admin/order/DetailOrder.jsx";
+import DetailOrder from "./pages/AdminDetailOrder.jsx";
+import AdminDetailOrder from "./pages/AdminDetailOrder.jsx";
+import UserTransactionHistory from "./pages/UserTransactionHistory.jsx";
 
 function App() {
   const location = useLocation();
@@ -35,7 +37,8 @@ function App() {
         <Route path="/register" element={<Register />} />/
         <Route path="/products" element={<Product />} />/
         <Route path="/product/:id" element={<ProductDetail />} />/
-        <Route path="/order/:id" element={<DetailOrder />} />/
+        <Route path="/order/:id" element={<AdminDetailOrder />} />/
+        <Route path="/transaction/:id" element={<UserTransactionHistory />} />/
         <Route path="/cart" element={<ShoppingCart />} />/
         <Route element={<PrivateRoute />}>
           <Route

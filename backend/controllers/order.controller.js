@@ -30,7 +30,10 @@ export const updateOrder = async (req, res, next) => {
 
 export const getAllOrders = async (req, res, next) => {
   try {
-    const orders = await Order.find({});
+    const userId = req.query.userId || "";
+    const orders = await Order.find({
+      userRef: { $regex: userId, $options: "i" },
+    });
     return res.status(200).json(orders);
   } catch (error) {
     next(error);

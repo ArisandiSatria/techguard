@@ -1,13 +1,17 @@
 import React from "react";
 import { CiUser } from "react-icons/ci";
 import { BsCart3 } from "react-icons/bs";
-
+import { Badge } from "antd";
 import { Link } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { userIsLoggedIn } from "../state/selector/loggedInUser.js";
+import { cart } from "../state/selector/cart.js";
 
 export default function Header() {
   const user = useRecoilValue(userIsLoggedIn);
+  const currentCart = useRecoilValue(cart);
+
+  console.log(currentCart);
   return (
     <header>
       <Link to="/" style={{ textDecoration: "none" }}>
@@ -35,7 +39,9 @@ export default function Header() {
             </Link>
             {user?.role == "customer" && (
               <Link to={"/cart"} style={{ color: "black" }}>
-                <BsCart3 className="icon" />
+                <Badge count={currentCart?.length} size="default">
+                  <BsCart3 className="icon" />
+                </Badge>
               </Link>
             )}
           </div>

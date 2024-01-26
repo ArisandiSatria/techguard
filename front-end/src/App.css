@@ -296,6 +296,13 @@ button:hover {
   background-color: #000;
 }
 
+button:disabled {
+  opacity: 0.7;
+  background-color: #fff;
+  color: #000;
+  cursor: auto;
+}
+
 .link-btn {
   background: none;
   color: white;
@@ -437,6 +444,9 @@ button:hover {
 .cart-item-section,
 .admin-order-item-section {
   width: 50%;
+  height: 750px;
+  overflow-y: auto;
+  padding-right: 1rem;
 }
 
 .cart-item,
@@ -477,6 +487,13 @@ button:hover {
 
 .cart-order-summary .button:hover {
   opacity: 0.7;
+}
+
+.cart-order-summary .button:disabled {
+  opacity: 0.7;
+  background-color: #fff;
+  color: #000;
+  cursor: auto;
 }
 
 /* Order Section */

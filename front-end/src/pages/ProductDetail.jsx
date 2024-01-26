@@ -38,7 +38,7 @@ export default function DetailProduct() {
   }, [id]);
 
   const addToCart = () => {
-    const isProductInCart = cart.find((item) => item._id === product._id);
+    const isProductInCart = cart?.find((item) => item._id === product._id);
 
     if (isProductInCart) {
       // setCart((prevCart) => [...prevCart, product]);

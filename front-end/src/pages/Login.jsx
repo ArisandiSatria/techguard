@@ -85,6 +85,11 @@ export default function Login() {
         <Link to={"/register"} style={{ textDecoration: "none" }}>
           <h3>Dont have an account? Register here.</h3>
         </Link>
+        <div style={{ fontStyle: "italic", fontSize: "small" }}>
+          <p>Use this account to login as admin =&gt; </p>
+          <p>email: admin1@gmail.com</p>
+          <p>password: admin1</p>
+        </div>
         {error && (
           <p
             style={{
